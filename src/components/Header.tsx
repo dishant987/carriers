@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { Bell } from "lucide-react";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -69,13 +70,7 @@ export default function Header() {
 
           <div className="flex items-center space-x-4">
             <motion.div whileHover={{ scale: 1.1 }}>
-              <Image
-                src="/bell.png"
-                alt="Notifications"
-                width={32}
-                height={32}
-                className="h-8 w-8 cursor-pointer transition"
-              />
+            <Bell />
             </motion.div>
 
             <div
