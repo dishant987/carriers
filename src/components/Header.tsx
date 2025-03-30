@@ -48,6 +48,7 @@ export default function Header() {
                 width={32}
                 height={32}
                 className="h-8 w-8"
+                unoptimized
               />
             </Link>
             <nav className="hidden md:flex space-x-6 ml-4">
