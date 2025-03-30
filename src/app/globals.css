@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+:root {
+  --border-gray-light: #e5e5e5;
+  --primary: #0047ab;
+}
+
+.border-custom {
+  border-color: var(--border-gray-light);
+}
+.bg-primary {
+  background-color: var(--primary);
+}
