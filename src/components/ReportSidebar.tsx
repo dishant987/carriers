@@ -4,6 +4,7 @@ import Link from "next/link";
 import Icon from "./Icons";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { IoMenu, IoClose } from "react-icons/io5";
 
 interface ITabs {
   name: string;
@@ -128,6 +129,7 @@ const tabs: ITabs[] = [
 
 const ReportSidebar = () => {
   const [openTab, setOpenTab] = useState<string | null>(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const pathname = usePathname();
 
   // Auto-expand the tab if current path matches any subroute
@@ -146,151 +148,241 @@ const ReportSidebar = () => {
 
   return (
     <div className="pl-4 pt-4 pr-4 w-72">
-      <ul className="space-y-2">
-        {tabs.map((tab) => {
-          const isActiveTab = tab.subRoutes.some(
-            (sub) => pathname === sub.path
-          );
-          return (
-            <motion.li
-              key={tab.key}
-              className="border-b rounded-lg border-gray-200"
-              initial={false}
-              transition={{ duration: 0.3 }}
-            >
-              <button
-                className={`w-full text-left flex gap-2 items-center p-3 py-[15px] rounded-lg border-r-4 transition-all duration-300 ease-in-out
+      <div className="lg:block hidden">
+        <ul className="space-y-2">
+          {tabs.map((tab) => {
+            const isActiveTab = tab.subRoutes.some(
+              (sub) => pathname === sub.path
+            );
+            return (
+              <motion.li
+                key={tab.key}
+                className="border-b rounded-lg border-gray-200"
+                initial={false}
+                transition={{ duration: 0.3 }}
+              >
+                <button
+                  className={`w-full text-left flex gap-2 items-center p-3 py-[15px] rounded-lg border-r-4 transition-all duration-300 ease-in-out
                 ${
                   isActiveTab
                     ? "border-r-[tab.color] shadow-lg shadow-gray-300"
                     : "border-transparent hover:shadow-lg hover:shadow-gray-300"
                 }
                 `}
-                style={{
-                  borderRightColor: isActiveTab ? tab.color : "transparent",
-                }}
-                onMouseEnter={(e) => {
-                  if (!isActiveTab)
-                    e.currentTarget.style.borderRightColor = tab.color || "";
-                }}
-                onMouseLeave={(e) => {
-                  if (!isActiveTab)
-                    e.currentTarget.style.borderRightColor = "transparent";
-                }}
-                onClick={() => toggleTab(tab.name)}
-              >
-                {/* Svg Icon */}
-                <Icon name={tab.key} color={tab.color} />
+                  style={{
+                    borderRightColor: isActiveTab ? tab.color : "transparent",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActiveTab)
+                      e.currentTarget.style.borderRightColor = tab.color || "";
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActiveTab)
+                      e.currentTarget.style.borderRightColor = "transparent";
+                  }}
+                  onClick={() => toggleTab(tab.name)}
+                >
+                  {/* Svg Icon */}
+                  <Icon name={tab.key} color={tab.color} />
 
-                <span className="flex flex-col">
-                  <span className="font-semibold text-[16px]">
-                    {tab.name.toUpperCase()}
+                  <span className="flex flex-col">
+                    <span className="font-semibold text-[16px]">
+                      {tab.name.toUpperCase()}
+                    </span>
+                    <span
+                      className="text-[16px] font-bold"
+                      style={{ color: tab.color }}
+                    >
+                      {tab.title}
+                    </span>
                   </span>
-                  <span
-                    className="text-[16px] font-bold"
-                    style={{ color: tab.color }}
-                  >
-                    {tab.title}
-                  </span>
-                </span>
-              </button>
+                </button>
 
-              <AnimatePresence>
-                {openTab === tab.name && (
-                  <motion.ul
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{
-                      opacity: 1,
-                      height: "auto",
-                      transition: {
-                        opacity: { duration: 0.2 },
-                        height: { duration: 0.3 },
-                      },
+                <AnimatePresence>
+                  {openTab === tab.name && (
+                    <motion.ul
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{
+                        opacity: 1,
+                        height: "auto",
+                        transition: {
+                          opacity: { duration: 0.2 },
+                          height: { duration: 0.3 },
+                        },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        height: 0,
+                        transition: {
+                          opacity: { duration: 0.1 },
+                          height: { duration: 0.2 },
+                        },
+                      }}
+                      className="overflow-hidden"
+                    >
+                      <div className="overflow-hidden">
+                        {tab.subRoutes.map((sub) => {
+                          const isActive = pathname === sub.path;
+                          return (
+                            <motion.li
+                              key={sub.name}
+                              initial={{ x: -20, opacity: 0 }}
+                              animate={{
+                                x: 0,
+                                opacity: 1,
+                                transition: {
+                                  duration: 0.3,
+                                  delay: isActive ? 0.2 : 0,
+                                },
+                              }}
+                            >
+                              <Link
+                                href={sub.path}
+                                className={`block pl-6 text-[15px] pr-3 py-2 ${
+                                  isActive
+                                    ? "font-bold text-black"
+                                    : "text-[#666B72] font-normal hover:text-black"
+                                }`}
+                              >
+                                <motion.div
+                                  whileHover={{ x: 5 }}
+                                  transition={{
+                                    type: "spring",
+                                    stiffness: 300,
+                                  }}
+                                >
+                                  {sub.title}
+                                </motion.div>
+                              </Link>
+                            </motion.li>
+                          );
+                        })}
+                      </div>
+                    </motion.ul>
+                  )}
+                </AnimatePresence>
+              </motion.li>
+            );
+          })}
+        </ul>
+
+        <motion.button
+          className="mt-6 w-full border border-[#0047AB] text-[#0047AB] py-2 rounded-lg flex items-center justify-center gap-2"
+          whileHover={{
+            backgroundColor: "#0047AB",
+            color: "white",
+            transition: { duration: 0.3 },
+          }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Download Report Card
+          <motion.svg
+            width="14"
+            height="15"
+            viewBox="0 0 14 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            animate={{
+              y: [0, 3, 0],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <path
+              d="M7 13L6.29289 13.7071L7 14.4142L7.70711 13.7071L7 13ZM8 1C8 0.447715 7.55229 0 7 0C6.44772 0 6 0.447715 6 1H8ZM0.292893 7.70711L6.29289 13.7071L7.70711 12.2929L1.70711 6.29289L0.292893 7.70711ZM7.70711 13.7071L13.7071 7.70711L12.2929 6.29289L6.29289 12.2929L7.70711 13.7071ZM8 13V1H6V13H8Z"
+              fill="currentColor"
+            />
+          </motion.svg>
+        </motion.button>
+      </div>
+      {/* Mobile Menu Button */}
+      <button
+        title="Menu Sidebar"
+        className="block lg:hidden z-50 bg-gray-800 text-white p-2 rounded-full"
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+      >
+        {isSidebarOpen ? <IoClose size={24} /> : <IoMenu size={24} />}
+      </button>
+      <div className="block lg:hidden relative">
+        {/* Sidebar */}
+        <motion.div
+          className={` fixed top-[86px] left-0 h-full w-72 bg-white shadow-lg z-40 p-4 transition-transform duration-300 lg:relative lg:translate-x-0 ${
+            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          } lg:block`}
+          initial={{ x: "-100%" }}
+          animate={{ x: isSidebarOpen ? 0 : "-100%" }}
+        >
+          <div className="flex items-center justify-between mb-4">
+            <button
+              className="bg-gray-800 text-white p-2 rounded-full"
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            >
+              {isSidebarOpen ? <IoClose size={24} /> : <IoMenu size={24} />}
+            </button>
+          </div>
+          <ul className="space-y-2">
+            {tabs.map((tab) => {
+              const isActiveTab = tab.subRoutes.some(
+                (sub) => pathname === sub.path
+              );
+              return (
+                <motion.li
+                  key={tab.key}
+                  className="border-b rounded-lg border-gray-200"
+                  initial={false}
+                  transition={{ duration: 0.3 }}
+                >
+                  <button
+                    className="w-full text-left flex gap-2 items-center p-3 rounded-lg border-r-4 transition-all"
+                    style={{
+                      borderRightColor: isActiveTab ? tab.color : "transparent",
                     }}
-                    exit={{
-                      opacity: 0,
-                      height: 0,
-                      transition: {
-                        opacity: { duration: 0.1 },
-                        height: { duration: 0.2 },
-                      },
-                    }}
-                    className="overflow-hidden"
+                    onClick={() => toggleTab(tab.name)}
                   >
-                    <div className="overflow-hidden">
-                      {tab.subRoutes.map((sub) => {
-                        const isActive = pathname === sub.path;
-                        return (
-                          <motion.li
-                            key={sub.name}
-                            initial={{ x: -20, opacity: 0 }}
-                            animate={{
-                              x: 0,
-                              opacity: 1,
-                              transition: {
-                                duration: 0.3,
-                                delay: isActive ? 0.2 : 0,
-                              },
-                            }}
-                          >
+                    <Icon name={tab.key} color={tab.color} />
+                    <span className="flex flex-col">
+                      <span className="font-semibold text-[16px]">
+                        {tab.name.toUpperCase()}
+                      </span>
+                      <span
+                        className="text-[16px] font-bold"
+                        style={{ color: tab.color }}
+                      >
+                        {tab.title}
+                      </span>
+                    </span>
+                  </button>
+
+                  <AnimatePresence>
+                    {openTab === tab.name && (
+                      <motion.ul
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="overflow-hidden"
+                      >
+                        {tab.subRoutes.map((sub) => (
+                          <li key={sub.name}>
                             <Link
                               href={sub.path}
-                              className={`block pl-6 text-[15px] pr-3 py-2 ${
-                                isActive
-                                  ? "font-bold text-black"
-                                  : "text-[#666B72] font-normal hover:text-black"
-                              }`}
+                              className="block pl-6 text-[15px] pr-3 py-2 text-[#666B72] hover:text-black"
                             >
-                              <motion.div
-                                whileHover={{ x: 5 }}
-                                transition={{ type: "spring", stiffness: 300 }}
-                              >
-                                {sub.title}
-                              </motion.div>
+                              {sub.title}
                             </Link>
-                          </motion.li>
-                        );
-                      })}
-                    </div>
-                  </motion.ul>
-                )}
-              </AnimatePresence>
-            </motion.li>
-          );
-        })}
-      </ul>
-
-      <motion.button
-        className="mt-6 w-full border border-[#0047AB] text-[#0047AB] py-2 rounded-lg flex items-center justify-center gap-2"
-        whileHover={{
-          backgroundColor: "#0047AB",
-          color: "white",
-          transition: { duration: 0.3 },
-        }}
-        whileTap={{ scale: 0.95 }}
-      >
-        Download Report Card
-        <motion.svg
-          width="14"
-          height="15"
-          viewBox="0 0 14 15"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          animate={{
-            y: [0, 3, 0],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <path
-            d="M7 13L6.29289 13.7071L7 14.4142L7.70711 13.7071L7 13ZM8 1C8 0.447715 7.55229 0 7 0C6.44772 0 6 0.447715 6 1H8ZM0.292893 7.70711L6.29289 13.7071L7.70711 12.2929L1.70711 6.29289L0.292893 7.70711ZM7.70711 13.7071L13.7071 7.70711L12.2929 6.29289L6.29289 12.2929L7.70711 13.7071ZM8 13V1H6V13H8Z"
-            fill="currentColor"
-          />
-        </motion.svg>
-      </motion.button>
+                          </li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </motion.li>
+              );
+            })}
+          </ul>
+        </motion.div>
+      </div>
     </div>
   );
 };

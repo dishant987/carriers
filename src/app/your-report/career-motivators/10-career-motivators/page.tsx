@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import Head from "next/head";
 
 const item = {
   hidden: { opacity: 0, y: 20 },
@@ -77,6 +78,47 @@ const page = () => {
   ];
   return (
     <>
+      <Head>
+        <title>Top 10 Career Motivators</title>
+        <meta
+          name="description"
+          content="Discover the top 10 career motivators that drive professional success and satisfaction."
+        />
+        <meta
+          name="keywords"
+          content="career motivators, job satisfaction, career development, leadership, continuous learning"
+        />
+        <meta name="author" content="Your Name" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content="Top 10 Career Motivators" />
+        <meta
+          property="og:description"
+          content="Explore the key career motivators that help individuals achieve success and job satisfaction."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://yourwebsite.com/career-motivators"
+        />
+        <meta
+          property="og:image"
+          content="https://yourwebsite.com/og-image.jpg"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Top 10 Career Motivators" />
+        <meta
+          name="twitter:description"
+          content="Explore the key career motivators that help individuals achieve success and job satisfaction."
+        />
+        <meta
+          name="twitter:image"
+          content="https://yourwebsite.com/twitter-image.jpg"
+        />
+      </Head>
       <h1 className="text-[18px] text-[#0047AB] font-bold">
         TOP 10 Career Motivators
       </h1>

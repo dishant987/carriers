@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import Head from "next/head";
 
 const item = {
   hidden: { opacity: 0, y: 20 },
@@ -58,6 +59,53 @@ const page = () => {
   ];
   return (
     <>
+      <Head>
+        <title>5 Emotional Elements of Career Growth</title>
+        <meta
+          name="description"
+          content="Explore the five emotional elements that influence career growth, leadership, and decision-making."
+        />
+        <meta
+          name="keywords"
+          content="emotional intelligence, career growth, leadership, self-awareness, motivation"
+        />
+        <meta name="author" content="Your Name" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* Open Graph / Facebook */}
+        <meta
+          property="og:title"
+          content="5 Emotional Elements of Career Growth"
+        />
+        <meta
+          property="og:description"
+          content="Explore the five emotional elements that influence career growth, leadership, and decision-making."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://yourwebsite.com/emotional-elements"
+        />
+        <meta
+          property="og:image"
+          content="https://yourwebsite.com/og-image.jpg"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="5 Emotional Elements of Career Growth"
+        />
+        <meta
+          name="twitter:description"
+          content="Explore the five emotional elements that influence career growth, leadership, and decision-making."
+        />
+        <meta
+          name="twitter:image"
+          content="https://yourwebsite.com/twitter-image.jpg"
+        />
+      </Head>
       <h1 className="text-[18px] text-[#0047AB] font-bold">
         5 Emotional Elements
       </h1>
@@ -118,7 +166,8 @@ const page = () => {
           <motion.div
             variants={item}
             whileHover={"hover"}
-          className=" bg-[#CACACA33]  rounded-xl p-3">
+            className=" bg-[#CACACA33]  rounded-xl p-3"
+          >
             <p className="font-bold text-[16px]">
               Improved Decision Making and Problem Solving
             </p>
@@ -134,7 +183,8 @@ const page = () => {
           <motion.div
             variants={item}
             whileHover={"hover"}
-          className=" bg-[#CACACA33]  rounded-xl p-3">
+            className=" bg-[#CACACA33]  rounded-xl p-3"
+          >
             <p className="font-bold text-[16px]">
               Alignment with Personal Values
             </p>
@@ -145,7 +195,9 @@ const page = () => {
           </motion.div>
           <motion.div
             variants={item}
-            whileHover={"hover"} className=" bg-[#CACACA33]  rounded-xl p-3">
+            whileHover={"hover"}
+            className=" bg-[#CACACA33]  rounded-xl p-3"
+          >
             <p className="font-bold text-[16px]">Improved Decision-Making</p>
             <p className="text-[#5B6871] text-sm">
               Focuses on concrete, tangible information and present realities
@@ -154,7 +206,9 @@ const page = () => {
           </motion.div>
           <motion.div
             variants={item}
-            whileHover={"hover"} className=" bg-[#CACACA33]  rounded-xl p-3">
+            whileHover={"hover"}
+            className=" bg-[#CACACA33]  rounded-xl p-3"
+          >
             <p className="font-bold text-[16px]">Enhanced Self-Awareness</p>
             <p className="text-[#5B6871] text-sm">
               Focuses on concrete, tangible information and present realities
@@ -171,7 +225,9 @@ const page = () => {
         <div className="flex  gap-4 py-4">
           <motion.div
             variants={item}
-            whileHover={"hover"} className=" bg-[#CACACA33]  rounded-xl p-3">
+            whileHover={"hover"}
+            className=" bg-[#CACACA33]  rounded-xl p-3"
+          >
             <p className="font-bold text-[16px]">
               improved Interpersonal Relationships
             </p>
@@ -184,7 +240,9 @@ const page = () => {
           </motion.div>
           <motion.div
             variants={item}
-            whileHover={"hover"} className=" bg-[#CACACA33]  rounded-xl p-3">
+            whileHover={"hover"}
+            className=" bg-[#CACACA33]  rounded-xl p-3"
+          >
             <p className="font-bold text-[16px]">Enhanced Job Performance</p>
             <p className="text-[#5B6871] text-sm">
               Focuses on concrete, tangible information and present realities

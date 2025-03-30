@@ -70,7 +70,7 @@ export default function Header() {
 
           <div className="flex items-center space-x-4">
             <motion.div whileHover={{ scale: 1.1 }}>
-            <Bell />
+              <Bell />
             </motion.div>
 
             <div
