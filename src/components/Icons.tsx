@@ -4,7 +4,6 @@ import React, { JSX } from "react";
 const Icon = ({
   name,
   color = "none",
-  className = "",
 }: {
   name: "test_1" | "test_2" | "test_3" | "test_4" | "test_5";
   color?: string;
