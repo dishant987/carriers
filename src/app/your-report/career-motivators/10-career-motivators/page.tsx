@@ -1,4 +1,16 @@
+"use client";
 import React from "react";
+import { motion } from "framer-motion";
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  hover: {
+    y: -5,
+    boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
+    transition: { duration: 0.3 },
+  },
+};
 
 const page = () => {
   const topCareers = [
@@ -104,14 +116,22 @@ const page = () => {
           include
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-          <div className=" bg-[#CACACA33]  rounded-xl p-3">
+          <motion.div
+            variants={item}
+            whileHover="hover"
+            className=" bg-[#CACACA33]  rounded-xl p-3"
+          >
             <p className="font-bold text-[16px]">Enhanced Job Satisfaction</p>
             <p className="text-[#5B6871] text-sm">
               Focuses on concrete, tangible information and present realities
               tangible information and present realities
             </p>
-          </div>
-          <div className=" bg-[#CACACA33]  rounded-xl p-3">
+          </motion.div>
+          <motion.div
+            variants={item}
+            whileHover="hover"
+            className=" bg-[#CACACA33]  rounded-xl p-3"
+          >
             <p className="font-bold text-[16px]">
               Improved Performance and Engagement
             </p>
@@ -119,8 +139,12 @@ const page = () => {
               Focuses on concrete, tangible information and present realities
               tangible information and present realities
             </p>
-          </div>
-          <div className=" bg-[#CACACA33]  rounded-xl p-3">
+          </motion.div>
+          <motion.div
+            variants={item}
+            whileHover="hover"
+            className=" bg-[#CACACA33]  rounded-xl p-3"
+          >
             <p className="font-bold text-[16px]">
               Career Planning and Development
             </p>
@@ -128,37 +152,50 @@ const page = () => {
               Focuses on concrete, tangible information and present realities
               tangible information and present realities
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
       <div className="py-[20px]">
         <h1 className="text-lg font-bold text-[#0047AB]">
-        Benefits of understanding interest using career motivators for career planning include
+          Benefits of understanding interest using career motivators for career
+          planning include
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-          <div className=" bg-[#CACACA33]  rounded-xl p-3">
-            <p className="font-bold text-[16px]">Alignment with Personal Values</p>
+          <motion.div
+            variants={item}
+            whileHover="hover"
+            className=" bg-[#CACACA33]  rounded-xl p-3"
+          >
+            <p className="font-bold text-[16px]">
+              Alignment with Personal Values
+            </p>
             <p className="text-[#5B6871] text-sm">
               Focuses on concrete, tangible information and present realities
               tangible information and present realities
             </p>
-          </div>
-          <div className=" bg-[#CACACA33]  rounded-xl p-3">
+          </motion.div>
+          <motion.div
+            variants={item}
+            whileHover="hover"
+            className=" bg-[#CACACA33]  rounded-xl p-3"
+          >
             <p className="font-bold text-[16px]">Improved Decision-Making</p>
             <p className="text-[#5B6871] text-sm">
               Focuses on concrete, tangible information and present realities
               tangible information and present realities
             </p>
-          </div>
-          <div className=" bg-[#CACACA33]  rounded-xl p-3">
+          </motion.div>
+          <motion.div
+            variants={item}
+            whileHover="hover"
+            className=" bg-[#CACACA33]  rounded-xl p-3"
+          >
             <p className="font-bold text-[16px]">Enhanced Self-Awareness</p>
             <p className="text-[#5B6871] text-sm">
               Focuses on concrete, tangible information and present realities
               tangible information and present realities
             </p>
-          </div>
-         
-         
+          </motion.div>
         </div>
       </div>
     </>

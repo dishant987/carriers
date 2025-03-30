@@ -1,7 +1,7 @@
 "use client";
-import RiasecWheel from "@/components/RiasecWheel";
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 // Animation variants
 const container = {
@@ -44,8 +44,9 @@ const Page = () => {
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.7 }}
+        className="flex justify-center"
       >
-        <RiasecWheel />
+        <Image src="/model.png" alt="RIASEC Wheel" width={400} height={400} />
       </motion.div>
 
       <motion.div className="py-[20px]">
@@ -162,7 +163,6 @@ const Page = () => {
               className="bg-[#CACACA33] rounded-xl p-3"
               variants={item}
               whileHover="hover"
-
             >
               <p className="font-bold text-[16px]">{card.title}</p>
               <p className="text-[#5B6871] text-sm">{card.content}</p>

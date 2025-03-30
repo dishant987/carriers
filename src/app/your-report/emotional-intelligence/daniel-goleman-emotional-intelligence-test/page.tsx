@@ -1,4 +1,16 @@
+"use client";
 import React from "react";
+import { motion } from "framer-motion";
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  hover: {
+    y: -5,
+    boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
+    transition: { duration: 0.3 },
+  },
+};
 
 const page = () => {
   const emotionalElements = [
@@ -49,29 +61,31 @@ const page = () => {
       <h1 className="text-[18px] text-[#0047AB] font-bold">
         5 Emotional Elements
       </h1>
-      <div className="py-4 ">
-        <div className="flex  gap-4">
-          {emotionalElements.map((element) => (
+
+      <div className="flex py-4  gap-4">
+        {emotionalElements.map((element) => (
+          <motion.div
+            key={element.id}
+            className="relative flex items-center justify-center"
+            whileHover={{ scale: 1.1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
             <div
-              key={element.id}
-              className="relative flex items-center justify-center"
+              className={`relative rounded-full h-[170px] w-[170px] ${element.bgColor} ${element.shadow} flex flex-col items-center justify-center`}
             >
-              {/* Main Circle with Radial Background and Shadow */}
-              <div
-                className={`relative rounded-full h-[170px] w-[170px] ${element.bgColor} ${element.shadow} flex flex-col items-center justify-center`}
+              <span
+                className={` ${element.roundColor} w-[42px] h-[42px] rounded-full flex items-center justify-center`}
               >
-                {/* Small Inner Circle */}
-                <span
-                  className={` ${element.roundColor} w-[42px] h-[42px] rounded-full flex items-center justify-center`}
-                >
-                  {element.id}
-                </span>
-                <h1>{element.title}</h1>
-              </div>
+                {element.id}
+              </span>
+              <h1>{element.title}</h1>
             </div>
-          ))}
-        </div>
+          </motion.div>
+        ))}
       </div>
+
       <div className="py-[20px]">
         <h1 className="text-lg font-bold text-[#0047AB]">
           Applications of the Emotional Intelligence Test in career development
@@ -86,7 +100,11 @@ const page = () => {
           education.
         </p>
         <div className="flex  gap-4 ">
-          <div className=" bg-[#CACACA33]  rounded-xl p-3">
+          <motion.div
+            variants={item}
+            whileHover={"hover"}
+            className=" bg-[#CACACA33]  rounded-xl p-3"
+          >
             <p className="font-bold text-[16px]">
               Enhanced Leadership and Communication Skills
             </p>
@@ -96,8 +114,11 @@ const page = () => {
               tangible information and present realities tangible information
               and present realities
             </p>
-          </div>
-          <div className=" bg-[#CACACA33]  rounded-xl p-3">
+          </motion.div>
+          <motion.div
+            variants={item}
+            whileHover={"hover"}
+          className=" bg-[#CACACA33]  rounded-xl p-3">
             <p className="font-bold text-[16px]">
               Improved Decision Making and Problem Solving
             </p>
@@ -107,10 +128,13 @@ const page = () => {
               tangible information and present realities tangible information
               and present realities
             </p>
-          </div>
+          </motion.div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-          <div className=" bg-[#CACACA33]  rounded-xl p-3">
+          <motion.div
+            variants={item}
+            whileHover={"hover"}
+          className=" bg-[#CACACA33]  rounded-xl p-3">
             <p className="font-bold text-[16px]">
               Alignment with Personal Values
             </p>
@@ -118,21 +142,25 @@ const page = () => {
               Focuses on concrete, tangible information and present realities
               tangible information and present realities
             </p>
-          </div>
-          <div className=" bg-[#CACACA33]  rounded-xl p-3">
+          </motion.div>
+          <motion.div
+            variants={item}
+            whileHover={"hover"} className=" bg-[#CACACA33]  rounded-xl p-3">
             <p className="font-bold text-[16px]">Improved Decision-Making</p>
             <p className="text-[#5B6871] text-sm">
               Focuses on concrete, tangible information and present realities
               tangible information and present realities
             </p>
-          </div>
-          <div className=" bg-[#CACACA33]  rounded-xl p-3">
+          </motion.div>
+          <motion.div
+            variants={item}
+            whileHover={"hover"} className=" bg-[#CACACA33]  rounded-xl p-3">
             <p className="font-bold text-[16px]">Enhanced Self-Awareness</p>
             <p className="text-[#5B6871] text-sm">
               Focuses on concrete, tangible information and present realities
               tangible information and present realities
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
       <div className="py-[20px]">
@@ -141,7 +169,9 @@ const page = () => {
           several benefits, including
         </h1>
         <div className="flex  gap-4 py-4">
-          <div className=" bg-[#CACACA33]  rounded-xl p-3">
+          <motion.div
+            variants={item}
+            whileHover={"hover"} className=" bg-[#CACACA33]  rounded-xl p-3">
             <p className="font-bold text-[16px]">
               improved Interpersonal Relationships
             </p>
@@ -151,8 +181,10 @@ const page = () => {
               tangible information and present realities tangible information
               and present realities
             </p>
-          </div>
-          <div className=" bg-[#CACACA33]  rounded-xl p-3">
+          </motion.div>
+          <motion.div
+            variants={item}
+            whileHover={"hover"} className=" bg-[#CACACA33]  rounded-xl p-3">
             <p className="font-bold text-[16px]">Enhanced Job Performance</p>
             <p className="text-[#5B6871] text-sm">
               Focuses on concrete, tangible information and present realities
@@ -160,7 +192,7 @@ const page = () => {
               tangible information and present realities tangible information
               and present realities
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </>

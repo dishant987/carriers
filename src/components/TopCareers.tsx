@@ -10,7 +10,7 @@ const TopCareers = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-5 bg-white px-4 md:px-16 py-4 border-t border-b border-custom shadow-md"
+      className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-5 bg-white px-4 md:px-16 py-4 border-t border-b border-custom "
     >
       {/* Left Side - Career Options */}
       <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-3 text-center md:text-left">

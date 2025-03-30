@@ -113,7 +113,7 @@ const page = () => {
       </h1>
       <div>
         <h1 className="text-lg font-bold">Introduction</h1>
-        <p className="text-sm mt-2 text-[#5B6871]">
+        <p className="text-[16px] mt-2 text-[#5B6871]">
           Congratulations on taking the first step for personalized Career
           Planning & Assessment! We understand the significance of making
           informed decisions as you navigate your academic journey and future
@@ -123,7 +123,7 @@ const page = () => {
         </p>
       </div>
       <div>
-        <p className="text-sm mt-2 text-[#252A31]">
+        <p className="text-[16px] mt-2 text-[#252A31]">
           <span className="font-bold">
             To understand your personality Myers-Brig Type Indicator (MBTI) test
             was used.{" "}
@@ -149,7 +149,7 @@ const page = () => {
                 whileHover={{ scale: 1.05, filter: "brightness(1.1)" }}
               >
                 <p className="font-bold text-[16px]">{option.left.label}</p>
-                <p className="text-[#696969] text-sm">
+                <p className="text-[#696969] text-[16px]">
                   {option.left.description}
                 </p>
               </motion.div>
@@ -165,7 +165,7 @@ const page = () => {
                 whileHover={{ scale: 1.05, filter: "brightness(1.1)" }}
               >
                 <p className="font-bold text-[16px]">{option.right.label}</p>
-                <p className="text-[#696969] text-sm">
+                <p className="text-[#696969] text-[16px]">
                   {option.right.description}
                 </p>
               </motion.div>
@@ -209,7 +209,7 @@ const page = () => {
               whileHover={{ scale: 1.05, filter: "brightness(1.1)" }}
             >
               <p className="font-bold text-[16px]">{card.title}</p>
-              <p className="text-[#5B6871] text-sm">{card.description}</p>
+              <p className="text-[#5B6871] text-[16px] font-light">{card.description}</p>
             </motion.div>
           ))}
         </motion.div>

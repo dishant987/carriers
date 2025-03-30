@@ -20,8 +20,15 @@ export default function Header() {
     { href: "/my-tests", label: "My Tests" },
     { href: "/my-sessions", label: "My Sessions" },
     { href: "/career-library", label: "Career Library" },
-    { href: "/your-report", label: "Your Report" },
+    {
+      href: "/your-report/personality-explorer/understanding",
+      label: "Your Report",
+    },
   ];
+
+  const handleMobileNavClick = () => {
+    setMobileMenuOpen(false);
+  };
 
   return (
     <motion.header
@@ -32,7 +39,6 @@ export default function Header() {
     >
       <div className="mx-auto px-6 md:px-20">
         <div className="flex justify-between items-center h-16">
-          {/* Left side: Logo and Navigation */}
           <div className="flex items-center gap-4">
             <Link href="/" className="flex items-center">
               <Image
@@ -61,7 +67,6 @@ export default function Header() {
             </nav>
           </div>
 
-          {/* Right side: Notifications and Profile Dropdown */}
           <div className="flex items-center space-x-4">
             <motion.div whileHover={{ scale: 1.1 }}>
               <Image
@@ -73,7 +78,6 @@ export default function Header() {
               />
             </motion.div>
 
-            {/* Profile Dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setDropdownOpen(true)}
@@ -127,7 +131,6 @@ export default function Header() {
               </AnimatePresence>
             </div>
 
-            {/* Mobile Menu Button */}
             <div className="md:hidden">
               <button
                 title="Mobile Menu"
@@ -153,7 +156,6 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
@@ -162,11 +164,12 @@ export default function Header() {
               exit={{ opacity: 0, y: -10 }}
               className="md:hidden border-t"
             >
-              <nav className="px-4 pt-2 pb-3 space-y-1">
+              <nav className="px-4 pt-2 pb-3 space-y-1 bg-white">
                 {navLinks.map(({ href, label }) => (
                   <motion.div whileHover={{ scale: 1.05 }} key={href}>
                     <Link
                       href={href}
+                      onClick={handleMobileNavClick}
                       className={`block px-3 py-2 rounded-md transition-all ${
                         pathname === href
                           ? "text-black font-bold"

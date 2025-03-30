@@ -1,13 +1,28 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Soleil';
+  src: url('/fonts/SoleilBold.otf') format('opentype'),
+       url('/fonts/SoleilBook.otf') format('opentype'),
+       url('/fonts/SoleilLight.otf') format('opentype'),
+       url('/fonts/SoleilRegular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --border-gray-light: #e5e5e5;
   --primary: #0047ab;
 }
 
+body {
+  font-family: 'Soleil', sans-serif;
+}
+
 .border-custom {
   border-color: var(--border-gray-light);
 }
+
 .bg-primary {
   background-color: var(--primary);
 }

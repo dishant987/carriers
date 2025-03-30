@@ -128,7 +128,6 @@ const tabs: ITabs[] = [
 
 const ReportSidebar = () => {
   const [openTab, setOpenTab] = useState<string | null>(null);
-  const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const pathname = usePathname();
 
   // Auto-expand the tab if current path matches any subroute
@@ -236,10 +235,10 @@ const ReportSidebar = () => {
                           >
                             <Link
                               href={sub.path}
-                              className={`block pl-6 pr-3 py-2 ${
+                              className={`block pl-6 text-[15px] pr-3 py-2 ${
                                 isActive
-                                  ? "font-semibold text-black"
-                                  : "text-gray-700 hover:text-black"
+                                  ? "font-bold text-black"
+                                  : "text-[#666B72] font-normal hover:text-black"
                               }`}
                             >
                               <motion.div
